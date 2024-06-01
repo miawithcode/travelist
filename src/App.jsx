@@ -1,5 +1,13 @@
+import Main from './components/Main';
+import Sidebar from './components/Sidebar';
+
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <Sidebar />
+      <Main />
+    </>
+  );
 };
 
 export default App;
