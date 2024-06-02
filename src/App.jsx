@@ -1,3 +1,4 @@
+import NewItemForm from './components/NewItemForm';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
@@ -6,6 +7,7 @@ const App = () => {
     <>
       <Sidebar />
       <Main />
+      <NewItemForm />
     </>
   );
 };
