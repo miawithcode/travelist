@@ -139,11 +139,6 @@ ul {
   background-color: var(--primary-100);
 }
 
-.view-icon {
-  width: 20px;
-  height: 20px;
-}
-
 .progress {
   display: flex;
   gap: 0.5rem;

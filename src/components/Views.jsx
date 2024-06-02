@@ -5,10 +5,10 @@ const Views = () => {
   return (
     <div className="view-btn-container">
       <button className="view-btn active">
-        <AlignTopIcon className="view-icon" />
+        <AlignTopIcon width={20} height={20} />
       </button>
       <button className="view-btn">
-        <LeftToRightListBulletIcon className="view-icon" />
+        <LeftToRightListBulletIcon width={20} height={20} />
       </button>
     </div>
   );
