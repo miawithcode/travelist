@@ -1,11 +1,5 @@
+import { generalButtons } from '../lib/constants';
 import Button from './Button';
-import AddCircleIcon from './icons/AddCircleIcon';
-import ArrowDataTransferVerticalIcon from './icons/ArrowDataTransferVerticalIcon';
-
-const generalButtons = [
-  { text: 'New item', icon: <AddCircleIcon /> },
-  { text: 'Sort by', icon: <ArrowDataTransferVerticalIcon /> },
-];
 
 const GeneralButtons = () => {
   return (
