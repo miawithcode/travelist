@@ -47,6 +47,7 @@ aside {
   gap: 1.5rem;
   background-color: var(--background);
   /* box-shadow: var(--sidebar-shadow); */
+  text-wrap: nowrap;
 }
 
 footer {
@@ -101,28 +102,6 @@ ul {
   align-items: flex-start;
 }
 
-.btn-new-item {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0rem;
-  border: 1px dashed var(--text-gray);
-  border-radius: var(--item-radius);
-  color: var(--text-gray);
-}
-
-.btn-new-section {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: var(--checklist-width);
-  height: 42px;
-  gap: 0.5rem;
-  color: var(--text-gray);
-}
-
 /** Logo **/
 
 .logo {
@@ -134,7 +113,13 @@ ul {
   color: var(--primary);
 }
 
-/** Views **/
+/** Checklist Header **/
+
+.checklist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
 .view-btn-container {
   display: flex;
@@ -156,8 +141,6 @@ ul {
   height: 20px;
 }
 
-/** Progress **/
-
 .progress {
   display: flex;
   gap: 0.5rem;
@@ -165,15 +148,10 @@ ul {
 
 /** Checklist **/
 
-.checklist-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
 .checklists-container {
   display: flex;
   gap: 3rem;
+  overflow: auto;
 }
 
 .checklist {
@@ -244,4 +222,26 @@ input[type='checkbox'] {
 
 label {
   cursor: pointer;
+}
+
+.btn-new-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0rem;
+  border: 1px dashed var(--text-gray);
+  border-radius: var(--item-radius);
+  color: var(--text-gray);
+}
+
+.btn-new-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: var(--checklist-width);
+  height: 42px;
+  gap: 0.5rem;
+  color: var(--text-gray);
 }
