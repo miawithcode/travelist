@@ -41,7 +41,7 @@ const Section = ({ category, categoryItems, color }) => {
 const Item = ({ label, isPacked }) => {
   return (
     <li className="item">
-      <label>
+      <label style={{ color: `${isPacked ? '#6b7280' : ''}` }}>
         <input type="checkbox" checked={isPacked} />
         {label}
       </label>
