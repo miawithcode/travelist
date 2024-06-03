@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
-import Cancel01Icon from './icons/Cancel01Icon';
 
-const NewItemForm = ({ addItem, isModalOpen, closeModal }) => {
+const NewItemForm = ({ addItem }) => {
   const [item, setItem] = useState('');
+  const [category, setCategory] = useState('Untitled');
   const [errorMessage, setErrorMessage] = useState('');
   const inputRef = useRef();
 
@@ -19,32 +19,27 @@ const NewItemForm = ({ addItem, isModalOpen, closeModal }) => {
       return;
     }
 
-    addItem(item);
+    addItem(category, item);
     setItem('');
     setErrorMessage('');
     inputRef.current.focus();
   };
 
   return (
-    <div className={`new-item-form-layer ${isModalOpen ? 'show' : ''}`}>
-      <div className="form-container">
-        <button className="close-btn" onClick={closeModal}>
-          <Cancel01Icon width={16} height={16} color={'#6b7280'} />
+    <div className="new-item-form-container">
+      <form onSubmit={handleSubmit} className="new-item-form">
+        <input
+          ref={inputRef}
+          value={item}
+          onChange={handleChange}
+          placeholder="ex. Toothbrush"
+          autoFocus={true}
+        />
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <button type="submit" className="btn-add-item">
+          Add
         </button>
-        <form onSubmit={handleSubmit} className="new-item-form">
-          <input
-            ref={inputRef}
-            value={item}
-            onChange={handleChange}
-            placeholder="ex. Toothpaste"
-            autoFocus={true}
-          />
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit" className="btn-add-item">
-            New item
-          </button>
-        </form>
-      </div>
+      </form>
     </div>
   );
 };

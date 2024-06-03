@@ -1,40 +1,60 @@
 import { useState } from 'react';
 import { initialItems } from './lib/constants';
-import NewItemForm from './components/NewItemForm';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [items, setItems] = useState(initialItems);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const toggleForm = () => {
+    setIsFormOpen(!isFormOpen);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const addItem = (newItemLabel) => {
+  const addItem = (category, newItemLabel) => {
     const newItem = {
       id: new Date().getTime(),
       label: newItemLabel,
       isPacked: false,
     };
-    const newItems = [...items, newItem];
+
+    const isCategoryExist = items.some((item) => item.category === category);
+
+    let newItems;
+
+    if (isCategoryExist) {
+      newItems = items.map((item) => {
+        if (item.category === category) {
+          return {
+            ...item,
+            categoryItems: [...item.categoryItems, newItem],
+          };
+        }
+
+        return item;
+      });
+    } else {
+      newItems = [
+        {
+          category,
+          categoryItems: [newItem],
+          color: '#EEEEEE',
+        },
+        ...items,
+      ];
+    }
+
     setItems(newItems);
   };
 
   return (
     <>
-      <Sidebar openModal={openModal} />
-      <Main items={items} />
-      <NewItemForm
+      <Sidebar
+        isFormOpen={isFormOpen}
+        toggleForm={toggleForm}
         addItem={addItem}
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
       />
+      <Main items={items} />
     </>
   );
 };

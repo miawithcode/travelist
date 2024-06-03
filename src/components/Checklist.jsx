@@ -33,7 +33,7 @@ const Section = ({ category, categoryItems, color }) => {
         ))}
       </ul>
 
-      <NewItemButton />
+      {/* <NewItemButton /> */}
     </section>
   );
 };

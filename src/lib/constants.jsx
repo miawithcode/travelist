@@ -23,11 +23,6 @@ export const initialItems = [
     ],
     color: '#eaf4f9',
   },
-  {
-    category: 'Digital Products',
-    categoryItems: [{ id: 9, label: 'Phone charger', isPacked: false }],
-    color: '#eaf9f3',
-  },
 ];
 
 export const checklistButtons = [
