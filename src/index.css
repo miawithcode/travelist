@@ -295,9 +295,6 @@ label > input:checked {
   background-color: var(--white);
   padding: 0.8rem 0.5rem;
   border-radius: var(--btn-radius);
-}
-
-.new-item-form > input:focus {
   outline: 1px solid var(--primary);
 }
 
