@@ -315,10 +315,10 @@ label > input:checked::before {
 
 .btn-add-item {
   align-self: flex-end;
-  color: var(--white);
-  background-color: var(--primary);
+  color: var(--primary);
+  background-color: var(--primary-100);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--primary);
   border-radius: var(--btn-radius);
   font-size: 14px;
+  font-weight: 500;
 }
