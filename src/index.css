@@ -230,11 +230,24 @@ label > input {
   border: 1px solid var(--border);
   border-radius: 50%;
   cursor: pointer;
+  position: relative;
 }
 
 label > input:checked {
-  border-color: var(--text-gray);
-  background-color: var(--border);
+  border-color: transparent;
+}
+
+label > input:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="%236b7280" fill="none"><path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+    no-repeat center center;
+  background-size: contain;
 }
 
 .delete-item-icon {
@@ -290,7 +303,7 @@ label > input:checked {
 
 .new-item-form > input {
   background-color: var(--white);
-  padding: 0.8rem 0.5rem;
+  padding: 0.5rem;
   border-radius: var(--btn-radius);
   outline: 1px solid var(--primary);
 }

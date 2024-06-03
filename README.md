@@ -7,9 +7,7 @@
 ## Todo
 
 - [ ] Progress bar
-- [ ] Add check icon for checked item
 - [ ] List view
 - [ ] New section function
-- [ ] ~~New item function in view~~
-- [ ] Sort function
 - [ ] Adjust scrollbar
+- [ ] ~~New item function in view~~
