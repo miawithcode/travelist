@@ -89,12 +89,17 @@ ul {
 
 .btn {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
   font-size: 16px;
-  padding: 0.325rem 0.25rem;
+  padding: 0.325rem 0;
   border-radius: var(--btn-radius);
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: var(--primary-100);
 }
 
 .btn-container {
