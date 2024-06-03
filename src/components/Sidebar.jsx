@@ -15,7 +15,7 @@ const Sidebar = ({ isFormOpen, toggleForm, addItem }) => {
       {/* General Buttons */}
       <section>
         {/* New Item Button */}
-        <div>
+        <div className={isFormOpen && 'active'}>
           <Button onClick={toggleForm}>
             <AddCircleIcon /> New item
           </Button>

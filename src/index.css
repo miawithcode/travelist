@@ -93,7 +93,7 @@ ul {
   align-items: center;
   gap: 0.5rem;
   font-size: 16px;
-  padding: 0.325rem 0rem;
+  padding: 0.325rem 0.25rem;
   border-radius: var(--btn-radius);
 }
 
@@ -288,6 +288,11 @@ label > input:checked::before {
 }
 
 /** New Item Form **/
+
+.active {
+  background-color: var(--primary-100);
+  border-radius: var(--btn-radius);
+}
 
 .new-item-form-container {
   padding: 0.5rem;
