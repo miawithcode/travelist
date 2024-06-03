@@ -2,7 +2,8 @@ import { useRef, useState } from 'react';
 
 const NewItemForm = ({ addItem }) => {
   const [item, setItem] = useState('');
-  const [category, setCategory] = useState('Untitled');
+  // const [category, setCategory] = useState('Untitled');
+  const category = 'Untitled';
   const [errorMessage, setErrorMessage] = useState('');
   const inputRef = useRef();
 
