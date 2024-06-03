@@ -9,8 +9,8 @@
   --pink: #f9eaeb;
   --blue: #eaf4f9;
   --green: #eaf9f3;
-  --sidebar-shadow: 5px 5px 20px #e5e5e5;
-  --item-shadow: 0px 0px 0px 1px rgba(14, 63, 126, 0.04),
+  --error: #ee4e4e;
+  --shadow: 0px 0px 0px 1px rgba(14, 63, 126, 0.04),
     0px 1px 1px -0.5px rgba(42, 51, 70, 0.04),
     0px 3px 3px -1.5px rgba(42, 51, 70, 0.04),
     0px 6px 6px -3px rgba(42, 51, 70, 0.04),
@@ -19,6 +19,8 @@
   --item-radius: 10px;
   --btn-radius: 5px;
   --checklist-width: 250px;
+  --sidebar-horizantol-padding: 2.5rem;
+  --sidebar-vertical-padding: 1rem;
 }
 
 * {
@@ -43,19 +45,18 @@ body {
 
 aside {
   position: relative;
-  padding: 1rem 2.5rem;
+  padding: var(--sidebar-vertical-padding) var(--sidebar-horizantol-padding);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   background-color: var(--background);
-  /* box-shadow: var(--sidebar-shadow); */
   text-wrap: nowrap;
 }
 
 footer {
   position: absolute;
-  left: 2rem;
-  bottom: 1rem;
+  left: var(--sidebar-horizantol-padding);
+  bottom: var(--sidebar-vertical-padding);
   font-size: 14px;
   color: var(--text-gray);
 }
@@ -198,7 +199,7 @@ ul {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  box-shadow: var(--item-shadow);
+  box-shadow: var(--shadow);
   border-radius: var(--item-radius);
   border: 1px solid transparent;
   padding-right: 0.5rem;
@@ -277,27 +278,34 @@ label > input:checked {
   position: absolute;
   top: 0;
   left: 0;
-  right:: 0;
+  right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+.form-container {
+  position: relative;
 }
 
 .new-item-form {
-  width: 30vw;
+  max-width: 340px;
   padding: 1.5rem 2rem;
   background-color: var(--background);
   border-radius: var(--btn-radius);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  position: relative;
 }
 
 .close-btn {
@@ -326,4 +334,9 @@ label > input:checked {
 .btn-add-item:hover {
   background-color: var(--primary-100);
   /* color: var(--text-light); */
+}
+
+.error-message {
+  font-size: 12px;
+  color: var(--error);
 }

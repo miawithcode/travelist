@@ -4,11 +4,11 @@ import Footer from './Footer';
 import GeneralButtons from './GeneralButtons';
 import Logo from './Logo';
 
-const Sidebar = () => {
+const Sidebar = ({ openModal }) => {
   return (
     <aside>
       <Logo />
-      <GeneralButtons />
+      <GeneralButtons openModal={openModal} />
       <Divider />
       <ChecklistButtons />
       <Footer />

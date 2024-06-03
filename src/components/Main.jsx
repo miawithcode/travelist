@@ -1,13 +1,17 @@
 import ChecklistHeader from './ChecklistHeader';
-import Checklists from './Checklists';
 import Divider from './Divider';
+import Checklist from './Checklist';
+import NewSectionButton from './NewSectionButton';
 
-const Main = () => {
+const Main = ({ items }) => {
   return (
     <main>
       <ChecklistHeader />
       <Divider />
-      <Checklists />
+      <section className="checklists-container">
+        <Checklist items={items} />
+        <NewSectionButton />
+      </section>
     </main>
   );
 };

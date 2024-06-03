@@ -1,12 +1,8 @@
-import { useState } from 'react';
-import { initialItems } from '../lib/constants';
 import ChecklistInfo from './ChecklistInfo';
 import NewItemButton from './NewItemButton';
 import Cancel01Icon from './icons/Cancel01Icon';
 
-const Checklist = () => {
-  const [items, setItems] = useState(initialItems);
-
+const Checklist = ({ items }) => {
   return (
     <div className="checklist">
       <ChecklistInfo />
