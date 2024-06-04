@@ -7,7 +7,15 @@ import AddCircleIcon from './icons/AddCircleIcon';
 import ArrowDataTransferVerticalIcon from './icons/ArrowDataTransferVerticalIcon';
 import NewItemForm from './NewItemForm';
 
-const Sidebar = ({ isFormOpen, toggleForm, addItem }) => {
+const Sidebar = ({
+  isFormOpen,
+  toggleForm,
+  addItem,
+  markAllAsIncomplete,
+  markAllAsComplete,
+  resetToInitial,
+  removeAllItems,
+}) => {
   return (
     <aside>
       <Logo />
@@ -31,7 +39,12 @@ const Sidebar = ({ isFormOpen, toggleForm, addItem }) => {
       </section>
 
       <Divider />
-      <ChecklistButtons />
+      <ChecklistButtons
+        markAllAsComplete={markAllAsComplete}
+        markAllAsIncomplete={markAllAsIncomplete}
+        resetToInitial={resetToInitial}
+        removeAllItems={removeAllItems}
+      />
       <Footer />
     </aside>
   );

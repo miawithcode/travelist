@@ -47,12 +47,50 @@ const App = () => {
     setItems(newItems);
   };
 
+  const markAllAsComplete = () => {
+    const newItems = items.map((item) => {
+      const newCategoryItems = item.categoryItems.map((categoryItem) => {
+        return {
+          ...categoryItem,
+          isPacked: true,
+        };
+      });
+      return { ...item, categoryItems: newCategoryItems };
+    });
+    setItems(newItems);
+  };
+
+  const markAllAsIncomplete = () => {
+    const newItems = items.map((item) => {
+      const newCategoryItems = item.categoryItems.map((categoryItem) => {
+        return {
+          ...categoryItem,
+          isPacked: false,
+        };
+      });
+      return { ...item, categoryItems: newCategoryItems };
+    });
+    setItems(newItems);
+  };
+
+  const resetToInitial = () => {
+    setItems(initialItems);
+  };
+
+  const removeAllItems = () => {
+    setItems([]);
+  };
+
   return (
     <>
       <Sidebar
         isFormOpen={isFormOpen}
         toggleForm={toggleForm}
         addItem={addItem}
+        markAllAsComplete={markAllAsComplete}
+        markAllAsIncomplete={markAllAsIncomplete}
+        resetToInitial={resetToInitial}
+        removeAllItems={removeAllItems}
       />
       <Main items={items} />
     </>
