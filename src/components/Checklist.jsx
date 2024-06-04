@@ -2,7 +2,7 @@
 import Cancel01Icon from './icons/Cancel01Icon';
 import MoreHorizontalIcon from './icons/MoreHorizontalIcon';
 
-const Checklist = ({ items, deleteItem }) => {
+const Checklist = ({ items, deleteItem, toggleItem }) => {
   return (
     <>
       {items.map((section) => {
@@ -11,6 +11,7 @@ const Checklist = ({ items, deleteItem }) => {
             key={section.category}
             {...section}
             deleteItem={deleteItem}
+            toggleItem={toggleItem}
           />
         );
       })}
@@ -18,7 +19,13 @@ const Checklist = ({ items, deleteItem }) => {
   );
 };
 
-const Section = ({ category, categoryItems, color, deleteItem }) => {
+const Section = ({
+  category,
+  categoryItems,
+  color,
+  deleteItem,
+  toggleItem,
+}) => {
   return (
     <section key={category} className="checklist">
       <div className="checklist-header">
@@ -35,7 +42,12 @@ const Section = ({ category, categoryItems, color, deleteItem }) => {
 
       <ul className="item-container">
         {categoryItems.map((item) => (
-          <Item key={item.id} {...item} deleteItem={deleteItem} />
+          <Item
+            key={item.id}
+            {...item}
+            deleteItem={deleteItem}
+            toggleItem={toggleItem}
+          />
         ))}
       </ul>
 
@@ -44,11 +56,15 @@ const Section = ({ category, categoryItems, color, deleteItem }) => {
   );
 };
 
-const Item = ({ id, label, isPacked, deleteItem }) => {
+const Item = ({ id, label, isPacked, deleteItem, toggleItem }) => {
   return (
     <li className="item">
       <label style={{ color: `${isPacked ? '#6b7280' : ''}` }}>
-        <input type="checkbox" checked={isPacked} />
+        <input
+          type="checkbox"
+          checked={isPacked}
+          onChange={() => toggleItem(id)}
+        />
         {label}
       </label>
 

@@ -57,6 +57,25 @@ const App = () => {
     setItems(newItems);
   };
 
+  const toggleItem = (id) => {
+    const newItems = items.map((category) => {
+      const newCategoryItems = category.categoryItems.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            isPacked: !item.isPacked,
+          };
+        }
+        return item;
+      });
+      return {
+        ...category,
+        categoryItems: newCategoryItems,
+      };
+    });
+    setItems(newItems);
+  };
+
   const markAllAsComplete = () => {
     const newItems = items.map((item) => {
       const newCategoryItems = item.categoryItems.map((categoryItem) => {
@@ -103,7 +122,7 @@ const App = () => {
         resetToInitial={resetToInitial}
         removeAllItems={removeAllItems}
       />
-      <Main items={items} deleteItem={deleteItem} />
+      <Main items={items} deleteItem={deleteItem} toggleItem={toggleItem} />
     </>
   );
 };
