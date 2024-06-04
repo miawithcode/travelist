@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { initialItems } from './lib/constants';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState(
+    () => JSON.parse(localStorage.getItem('items')) || initialItems
+  );
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
@@ -35,12 +37,12 @@ const App = () => {
       });
     } else {
       newItems = [
+        ...items,
         {
           category,
           categoryItems: [newItem],
           color: '#EEEEEE',
         },
-        ...items,
       ];
     }
 
@@ -110,6 +112,10 @@ const App = () => {
   const removeAllItems = () => {
     setItems([]);
   };
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
 
   return (
     <>
