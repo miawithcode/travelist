@@ -47,6 +47,16 @@ const App = () => {
     setItems(newItems);
   };
 
+  const deleteItem = (id) => {
+    const newItems = items.map((item) => {
+      const newCategoryItems = item.categoryItems.filter(
+        (item) => item.id !== id
+      );
+      return { ...item, categoryItems: newCategoryItems };
+    });
+    setItems(newItems);
+  };
+
   const markAllAsComplete = () => {
     const newItems = items.map((item) => {
       const newCategoryItems = item.categoryItems.map((categoryItem) => {
@@ -71,6 +81,7 @@ const App = () => {
       return { ...item, categoryItems: newCategoryItems };
     });
     setItems(newItems);
+    console.log(newItems);
   };
 
   const resetToInitial = () => {
@@ -92,7 +103,7 @@ const App = () => {
         resetToInitial={resetToInitial}
         removeAllItems={removeAllItems}
       />
-      <Main items={items} />
+      <Main items={items} deleteItem={deleteItem} />
     </>
   );
 };

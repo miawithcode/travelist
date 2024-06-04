@@ -4,7 +4,7 @@ import NewSectionButton from './NewSectionButton';
 import Views from './Views';
 import Progress from './Progress';
 
-const Main = ({ items }) => {
+const Main = ({ items, deleteItem }) => {
   return (
     <main>
       <div className="main-header">
@@ -13,7 +13,7 @@ const Main = ({ items }) => {
       </div>
       <Divider />
       <section className="checklists-container">
-        <Checklist items={items} />
+        <Checklist items={items} deleteItem={deleteItem} />
         <NewSectionButton />
       </section>
     </main>

@@ -2,17 +2,23 @@
 import Cancel01Icon from './icons/Cancel01Icon';
 import MoreHorizontalIcon from './icons/MoreHorizontalIcon';
 
-const Checklist = ({ items }) => {
+const Checklist = ({ items, deleteItem }) => {
   return (
     <>
       {items.map((section) => {
-        return <Section key={section.category} {...section} />;
+        return (
+          <Section
+            key={section.category}
+            {...section}
+            deleteItem={deleteItem}
+          />
+        );
       })}
     </>
   );
 };
 
-const Section = ({ category, categoryItems, color }) => {
+const Section = ({ category, categoryItems, color, deleteItem }) => {
   return (
     <section key={category} className="checklist">
       <div className="checklist-header">
@@ -29,7 +35,7 @@ const Section = ({ category, categoryItems, color }) => {
 
       <ul className="item-container">
         {categoryItems.map((item) => (
-          <Item key={item.id} {...item} />
+          <Item key={item.id} {...item} deleteItem={deleteItem} />
         ))}
       </ul>
 
@@ -38,7 +44,7 @@ const Section = ({ category, categoryItems, color }) => {
   );
 };
 
-const Item = ({ label, isPacked }) => {
+const Item = ({ id, label, isPacked, deleteItem }) => {
   return (
     <li className="item">
       <label style={{ color: `${isPacked ? '#6b7280' : ''}` }}>
@@ -46,7 +52,7 @@ const Item = ({ label, isPacked }) => {
         {label}
       </label>
 
-      <button>
+      <button onClick={() => deleteItem(id)}>
         <Cancel01Icon className="delete-item-icon" />
       </button>
     </li>
