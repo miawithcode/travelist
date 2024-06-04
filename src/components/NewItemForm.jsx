@@ -38,7 +38,7 @@ const NewItemForm = ({ addItem }) => {
             autoFocus={true}
           />
           <button type="submit" className="btn-add-item">
-            Add
+            Add to list
           </button>
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
