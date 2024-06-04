@@ -1,10 +1,12 @@
-// import NewItemButton from './NewItemButton';
+import EmptyView from './EmptyView';
 import Cancel01Icon from './icons/Cancel01Icon';
 import MoreHorizontalIcon from './icons/MoreHorizontalIcon';
 
 const Checklist = ({ items, deleteItem, toggleItem }) => {
   return (
     <>
+      {items.length === 0 && <EmptyView />}
+
       {items.map((section) => {
         return (
           <Section
