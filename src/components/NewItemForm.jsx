@@ -29,17 +29,19 @@ const NewItemForm = ({ addItem }) => {
   return (
     <div className="new-item-form-container">
       <form onSubmit={handleSubmit} className="new-item-form">
-        <input
-          ref={inputRef}
-          value={item}
-          onChange={handleChange}
-          placeholder="ex. Toothbrush"
-          autoFocus={true}
-        />
+        <div className="new-item-input">
+          <input
+            ref={inputRef}
+            value={item}
+            onChange={handleChange}
+            placeholder="eg. Toothbrush"
+            autoFocus={true}
+          />
+          <button type="submit" className="btn-add-item">
+            Add
+          </button>
+        </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit" className="btn-add-item">
-          Add
-        </button>
       </form>
     </div>
   );

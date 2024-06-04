@@ -4,7 +4,6 @@ import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const [items, setItems] = useState(
     () => JSON.parse(localStorage.getItem('items')) || initialItems
   );
@@ -120,7 +119,6 @@ const App = () => {
   return (
     <>
       <Sidebar
-        isFormOpen={isFormOpen}
         toggleForm={toggleForm}
         addItem={addItem}
         markAllAsComplete={markAllAsComplete}
@@ -128,7 +126,12 @@ const App = () => {
         resetToInitial={resetToInitial}
         removeAllItems={removeAllItems}
       />
-      <Main items={items} deleteItem={deleteItem} toggleItem={toggleItem} />
+      <Main
+        items={items}
+        addItem={addItem}
+        deleteItem={deleteItem}
+        toggleItem={toggleItem}
+      />
     </>
   );
 };
