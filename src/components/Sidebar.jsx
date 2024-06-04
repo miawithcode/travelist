@@ -11,24 +11,6 @@ const Sidebar = ({
   return (
     <aside>
       <Logo />
-
-      {/* General Buttons */}
-      {/* <section>
-        <div className={isFormOpen && 'active'}>
-          <Button onClick={toggleForm}>
-            <AddCircleIcon /> New item
-          </Button>
-          {isFormOpen && <NewItemForm addItem={addItem} />}
-        </div>
-
-        <div>
-          <Button>
-            <ArrowDataTransferVerticalIcon /> Sort by
-          </Button>
-        </div>
-      </section> */}
-
-      {/* <Divider /> */}
       <ChecklistButtons
         markAllAsComplete={markAllAsComplete}
         markAllAsIncomplete={markAllAsIncomplete}
