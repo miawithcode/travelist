@@ -122,7 +122,17 @@ const App = () => {
     }, 0);
   };
 
-  const categories = items.map((item) => item.category);
+  // const categories = items.map((item) => {
+  //   return item.category.map((category) => {
+  //     return { label: category, value: category };
+  //   });
+  // });
+
+  const categories = items
+    .map((item) => item.category)
+    .map((category) => {
+      return { label: category, value: category };
+    });
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));

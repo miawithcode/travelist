@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Select from 'react-select';
 
 const NewItemForm = ({ addItem, categories }) => {
   const [item, setItem] = useState('');
@@ -8,10 +9,6 @@ const NewItemForm = ({ addItem, categories }) => {
 
   const handleChange = (e) => {
     setItem(e.target.value);
-  };
-
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -33,14 +30,13 @@ const NewItemForm = ({ addItem, categories }) => {
     <div className="new-item-form-container">
       <form onSubmit={handleSubmit} className="new-item-form">
         <div className="new-item-input">
-          <select value={category} onChange={handleCategoryChange}>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-
+          <div className="section-select">
+            <Select
+              defaultValue={categories[0]}
+              options={categories}
+              onChange={(option) => setCategory(option.value)}
+            />
+          </div>
           <input
             ref={inputRef}
             value={item}

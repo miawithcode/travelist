@@ -131,22 +131,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-}
-
-.view-btn-container {
-  display: flex;
-  padding-bottom: 1rem;
-}
-
-.view-btn {
-  padding: 0.5rem;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-}
-
-.view-btn.active {
-  background-color: var(--primary-100);
+  margin-bottom: 1rem;
 }
 
 .progress {
@@ -335,16 +320,18 @@ label > input:checked::before {
 }
 
 .btn-add-item {
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--black);
+  background-color: var(--white);
   width: 12rem;
   text-align: center;
   border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
   font-weight: 500;
+  border: 1px solid var(--black);
 }
 
 .btn-add-item:hover {
-  background-color: var(--dark);
+  color: var(--dark);
+  border-color: var(--dark);
 }
 
 .empty-state {
@@ -356,4 +343,12 @@ label > input:checked::before {
   justify-content: center;
   align-items: flex-start;
   color: var(--text-gray);
+}
+
+.sorting {
+  min-width: 22%;
+}
+
+.section-select {
+  min-width: 18%;
 }

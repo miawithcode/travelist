@@ -2,7 +2,7 @@ export const initialItems = [
   {
     category: 'Inbox',
     categoryItems: [],
-    color: '#eaf4f9',
+    color: '#EEEEEE',
   },
   {
     category: 'Important',
