@@ -5,6 +5,8 @@ import Progress from './Progress';
 import NewItemForm from './NewItemForm';
 import Sort from './Sort';
 import { useMemo, useState } from 'react';
+import Header from './Header';
+import ChecklistContainer from './ChecklistContainer';
 
 const Main = ({
   items,
@@ -42,22 +44,24 @@ const Main = ({
     <main>
       <NewItemForm addItem={addItem} categories={categories} />
 
-      <div className="main-header">
+      <Header>
         <Sort sortBy={sortBy} setSortBy={setSortBy} />
         <Progress
           numbersOfItemsPacked={numbersOfItemsPacked}
           totalNumberOfItems={totalNumberOfItems}
         />
-      </div>
+      </Header>
+
       <Divider />
-      <section className="checklists-container">
+
+      <ChecklistContainer>
         <Checklist
           items={sortedItems}
           deleteItem={deleteItem}
           toggleItem={toggleItem}
         />
         <NewSectionButton />
-      </section>
+      </ChecklistContainer>
     </main>
   );
 };
