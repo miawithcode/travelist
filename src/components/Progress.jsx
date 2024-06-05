@@ -1,11 +1,12 @@
 // import Progressbar from './Progressbar';
 
-const Progress = () => {
+const Progress = ({ numbersOfItemsPacked, totalNumberOfItems }) => {
   return (
     <div className="progress">
       {/* <Progressbar /> */}
       <p>
-        <span className="emphasis-color">5</span> / 30 items packed
+        <span className="emphasis-color">{numbersOfItemsPacked}</span> /{' '}
+        {totalNumberOfItems} items packed
       </p>
     </div>
   );

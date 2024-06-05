@@ -8,35 +8,33 @@ const App = () => {
     () => JSON.parse(localStorage.getItem('items')) || initialItems
   );
 
-  const addItem = (categoryLabel, newItemLabel) => {
+  const addItem = (category, newItemLabel) => {
     const newItem = {
       id: new Date().getTime(),
       label: newItemLabel,
       isPacked: false,
     };
 
-    const isCategoryExist = items.some(
-      (item) => item.category === categoryLabel
-    );
+    const isCategoryExist = items.some((item) => item.category === category);
 
     let newItems;
 
     if (isCategoryExist) {
-      newItems = items.map((category) => {
-        if (category.category === categoryLabel) {
+      newItems = items.map((item) => {
+        if (item.category === category) {
           return {
-            ...category,
-            categoryItems: [...category.categoryItems, newItem],
+            ...item,
+            categoryItems: [...item.categoryItems, newItem],
           };
         }
 
-        return category;
+        return item;
       });
     } else {
       newItems = [
         ...items,
         {
-          categoryLabel,
+          category,
           categoryItems: [newItem],
           color: '#EEEEEE',
         },
@@ -109,6 +107,21 @@ const App = () => {
     setItems([]);
   };
 
+  const calculateTotalNumberOfItems = (items) => {
+    return items.reduce((accumulator, category) => {
+      return accumulator + category.categoryItems.length;
+    }, 0);
+  };
+
+  const calculateNumbersOfItemsPacked = (items) => {
+    return items.reduce((accumulator, category) => {
+      return (
+        accumulator +
+        category.categoryItems.filter((item) => item.isPacked).length
+      );
+    }, 0);
+  };
+
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
   }, [items]);
@@ -127,6 +140,8 @@ const App = () => {
         addItem={addItem}
         deleteItem={deleteItem}
         toggleItem={toggleItem}
+        totalNumberOfItems={calculateTotalNumberOfItems(items)}
+        numbersOfItemsPacked={calculateNumbersOfItemsPacked(items)}
       />
     </>
   );

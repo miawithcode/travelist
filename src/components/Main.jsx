@@ -5,14 +5,24 @@ import Views from './Views';
 import Progress from './Progress';
 import NewItemForm from './NewItemForm';
 
-const Main = ({ items, addItem, deleteItem, toggleItem }) => {
+const Main = ({
+  items,
+  addItem,
+  deleteItem,
+  toggleItem,
+  totalNumberOfItems,
+  numbersOfItemsPacked,
+}) => {
   return (
     <main>
       <NewItemForm addItem={addItem} />
 
       <div className="main-header">
         <Views />
-        <Progress />
+        <Progress
+          numbersOfItemsPacked={numbersOfItemsPacked}
+          totalNumberOfItems={totalNumberOfItems}
+        />
       </div>
       <Divider />
       <section className="checklists-container">

@@ -34,7 +34,7 @@ const NewItemForm = ({ addItem }) => {
             ref={inputRef}
             value={item}
             onChange={handleChange}
-            placeholder="eg. Toothbrush"
+            placeholder="e.g. Toothbrush"
             autoFocus={true}
           />
           <button type="submit" className="btn-add-item">
