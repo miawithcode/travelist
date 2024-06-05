@@ -1,5 +1,10 @@
 export const initialItems = [
   {
+    category: 'Inbox',
+    categoryItems: [],
+    color: '#eaf4f9',
+  },
+  {
     category: 'Important',
     categoryItems: [
       { id: 1, label: 'Good mood', isPacked: true },
@@ -11,6 +16,14 @@ export const initialItems = [
   {
     category: 'Digital Products',
     categoryItems: [{ id: 4, label: 'Phone charger', isPacked: false }],
+    color: '#eaf4f9',
+  },
+];
+
+export const emptyItems = [
+  {
+    category: 'Inbox',
+    categoryItems: [],
     color: '#eaf4f9',
   },
 ];

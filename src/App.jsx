@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { initialItems } from './lib/constants';
+import { emptyItems, initialItems } from './lib/constants';
 import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
@@ -104,7 +104,7 @@ const App = () => {
   };
 
   const removeAllItems = () => {
-    setItems([]);
+    setItems(emptyItems);
   };
 
   const calculateTotalNumberOfItems = (items) => {
