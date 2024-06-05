@@ -8,37 +8,35 @@ const App = () => {
     () => JSON.parse(localStorage.getItem('items')) || initialItems
   );
 
-  const toggleForm = () => {
-    setIsFormOpen(!isFormOpen);
-  };
-
-  const addItem = (category, newItemLabel) => {
+  const addItem = (categoryLabel, newItemLabel) => {
     const newItem = {
       id: new Date().getTime(),
       label: newItemLabel,
       isPacked: false,
     };
 
-    const isCategoryExist = items.some((item) => item.category === category);
+    const isCategoryExist = items.some(
+      (item) => item.category === categoryLabel
+    );
 
     let newItems;
 
     if (isCategoryExist) {
-      newItems = items.map((item) => {
-        if (item.category === category) {
+      newItems = items.map((category) => {
+        if (category.category === categoryLabel) {
           return {
-            ...item,
-            categoryItems: [...item.categoryItems, newItem],
+            ...category,
+            categoryItems: [...category.categoryItems, newItem],
           };
         }
 
-        return item;
+        return category;
       });
     } else {
       newItems = [
         ...items,
         {
-          category,
+          categoryLabel,
           categoryItems: [newItem],
           color: '#EEEEEE',
         },
@@ -49,11 +47,11 @@ const App = () => {
   };
 
   const deleteItem = (id) => {
-    const newItems = items.map((item) => {
-      const newCategoryItems = item.categoryItems.filter(
+    const newItems = items.map((category) => {
+      const newCategoryItems = category.categoryItems.filter(
         (item) => item.id !== id
       );
-      return { ...item, categoryItems: newCategoryItems };
+      return { ...category, categoryItems: newCategoryItems };
     });
     setItems(newItems);
   };
@@ -78,30 +76,29 @@ const App = () => {
   };
 
   const markAllAsComplete = () => {
-    const newItems = items.map((item) => {
-      const newCategoryItems = item.categoryItems.map((categoryItem) => {
+    const newItems = items.map((category) => {
+      const newCategoryItems = category.categoryItems.map((item) => {
         return {
-          ...categoryItem,
+          ...item,
           isPacked: true,
         };
       });
-      return { ...item, categoryItems: newCategoryItems };
+      return { ...category, categoryItems: newCategoryItems };
     });
     setItems(newItems);
   };
 
   const markAllAsIncomplete = () => {
-    const newItems = items.map((item) => {
-      const newCategoryItems = item.categoryItems.map((categoryItem) => {
+    const newItems = items.map((category) => {
+      const newCategoryItems = category.categoryItems.map((item) => {
         return {
-          ...categoryItem,
+          ...item,
           isPacked: false,
         };
       });
-      return { ...item, categoryItems: newCategoryItems };
+      return { ...category, categoryItems: newCategoryItems };
     });
     setItems(newItems);
-    console.log(newItems);
   };
 
   const resetToInitial = () => {
@@ -119,7 +116,6 @@ const App = () => {
   return (
     <>
       <Sidebar
-        toggleForm={toggleForm}
         addItem={addItem}
         markAllAsComplete={markAllAsComplete}
         markAllAsIncomplete={markAllAsIncomplete}
