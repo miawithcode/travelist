@@ -12,10 +12,11 @@ const Main = ({
   toggleItem,
   totalNumberOfItems,
   numbersOfItemsPacked,
+  categories,
 }) => {
   return (
     <main>
-      <NewItemForm addItem={addItem} />
+      <NewItemForm addItem={addItem} categories={categories} />
 
       <div className="main-header">
         <Views />

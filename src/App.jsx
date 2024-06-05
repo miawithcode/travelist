@@ -122,6 +122,8 @@ const App = () => {
     }, 0);
   };
 
+  const categories = items.map((item) => item.category);
+
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
   }, [items]);
@@ -142,6 +144,7 @@ const App = () => {
         toggleItem={toggleItem}
         totalNumberOfItems={calculateTotalNumberOfItems(items)}
         numbersOfItemsPacked={calculateNumbersOfItemsPacked(items)}
+        categories={categories}
       />
     </>
   );

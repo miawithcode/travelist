@@ -1,14 +1,17 @@
 import { useRef, useState } from 'react';
 
-const NewItemForm = ({ addItem }) => {
+const NewItemForm = ({ addItem, categories }) => {
   const [item, setItem] = useState('');
-  // const [category, setCategory] = useState('Untitled');
-  const category = 'Untitled';
+  const [category, setCategory] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const inputRef = useRef();
 
   const handleChange = (e) => {
     setItem(e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -30,6 +33,14 @@ const NewItemForm = ({ addItem }) => {
     <div className="new-item-form-container">
       <form onSubmit={handleSubmit} className="new-item-form">
         <div className="new-item-input">
+          <select value={category} onChange={handleCategoryChange}>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+
           <input
             ref={inputRef}
             value={item}
