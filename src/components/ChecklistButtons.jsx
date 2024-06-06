@@ -3,13 +3,16 @@ import CheckmarkCircle02Icon from './icons/CheckmarkCircle02Icon';
 import Delete02Icon from './icons/Delete02Icon';
 import RemoveCircleIcon from './icons/RemoveCircleIcon';
 import Button from './Button';
+import useItemsContext from '../hooks/useItemsContext';
 
-const ChecklistButtons = ({
-  markAllAsComplete,
-  markAllAsIncomplete,
-  resetToInitial,
-  removeAllItems,
-}) => {
+const ChecklistButtons = () => {
+  const {
+    markAllAsComplete,
+    markAllAsIncomplete,
+    resetToInitial,
+    removeAllItems,
+  } = useItemsContext();
+
   const checklistButtons = [
     {
       text: 'Mark all as complete',

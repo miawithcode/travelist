@@ -1,33 +1,21 @@
+import useItemsContext from '../hooks/useItemsContext';
 import EmptyView from './EmptyView';
 import Cancel01Icon from './icons/Cancel01Icon';
 import MoreHorizontalIcon from './icons/MoreHorizontalIcon';
 
-const Checklist = ({ items, deleteItem, toggleItem }) => {
+const Checklist = ({ items }) => {
   return (
     <>
       {items.length === 0 && <EmptyView />}
 
       {items.map((section) => {
-        return (
-          <Section
-            key={section.category}
-            {...section}
-            deleteItem={deleteItem}
-            toggleItem={toggleItem}
-          />
-        );
+        return <Section key={section.category} {...section} />;
       })}
     </>
   );
 };
 
-const Section = ({
-  category,
-  categoryItems,
-  color,
-  deleteItem,
-  toggleItem,
-}) => {
+const Section = ({ category, categoryItems, color }) => {
   return (
     <section key={category} className="checklist">
       <div className="checklist-header">
@@ -44,12 +32,7 @@ const Section = ({
 
       <ul className="item-container">
         {categoryItems.map((item) => (
-          <Item
-            key={item.id}
-            {...item}
-            deleteItem={deleteItem}
-            toggleItem={toggleItem}
-          />
+          <Item key={item.id} {...item} />
         ))}
       </ul>
 
@@ -58,7 +41,9 @@ const Section = ({
   );
 };
 
-const Item = ({ id, label, isPacked, deleteItem, toggleItem }) => {
+const Item = ({ id, label, isPacked }) => {
+  const { deleteItem, toggleItem } = useItemsContext();
+
   return (
     <li className="item">
       <label style={{ color: `${isPacked ? '#6b7280' : ''}` }}>

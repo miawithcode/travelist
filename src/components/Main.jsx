@@ -7,16 +7,12 @@ import Sort from './Sort';
 import { useMemo, useState } from 'react';
 import Header from './Header';
 import ChecklistContainer from './ChecklistContainer';
+import useItemsContext from '../hooks/useItemsContext';
 
-const Main = ({
-  items,
-  addItem,
-  deleteItem,
-  toggleItem,
-  totalNumberOfItems,
-  numbersOfItemsPacked,
-  categories,
-}) => {
+const Main = () => {
+  const { items, calculateNumbersOfItemsPacked, calculateTotalNumberOfItems } =
+    useItemsContext();
+
   const [sortBy, setSortBy] = useState('default');
 
   const sortedItems = useMemo(
@@ -42,24 +38,20 @@ const Main = ({
 
   return (
     <main>
-      <NewItemForm addItem={addItem} categories={categories} />
+      <NewItemForm />
 
       <Header>
         <Sort sortBy={sortBy} setSortBy={setSortBy} />
         <Progress
-          numbersOfItemsPacked={numbersOfItemsPacked}
-          totalNumberOfItems={totalNumberOfItems}
+          numbersOfItemsPacked={calculateNumbersOfItemsPacked(items)}
+          totalNumberOfItems={calculateTotalNumberOfItems(items)}
         />
       </Header>
 
       <Divider />
 
       <ChecklistContainer>
-        <Checklist
-          items={sortedItems}
-          deleteItem={deleteItem}
-          toggleItem={toggleItem}
-        />
+        <Checklist items={sortedItems} />
         <NewSectionButton />
       </ChecklistContainer>
     </main>

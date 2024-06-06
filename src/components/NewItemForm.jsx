@@ -1,9 +1,12 @@
 import { useRef, useState } from 'react';
 import Select from 'react-select';
+import useItemsContext from '../hooks/useItemsContext';
 
-const NewItemForm = ({ addItem, categories }) => {
+const NewItemForm = () => {
+  const { addItem, categories } = useItemsContext();
+
   const [item, setItem] = useState('');
-  const [category, setCategory] = useState('Important');
+  const [category, setCategory] = useState('Inbox');
   const [errorMessage, setErrorMessage] = useState('');
   const inputRef = useRef();
 
