@@ -6,12 +6,12 @@ import Button from './Button';
 import { useItemsStore } from '../stores/itemsStore';
 
 const ChecklistButtons = () => {
-  const markAllAsComplete = useItemsStore((state) => state.markAllAsComplete);
-  const markAllAsIncomplete = useItemsStore(
-    (state) => state.markAllAsIncomplete
-  );
-  const resetToInitial = useItemsStore((state) => state.resetToInitial);
-  const removeAllItems = useItemsStore((state) => state.removeAllItems);
+  const {
+    markAllAsComplete,
+    markAllAsIncomplete,
+    resetToInitial,
+    removeAllItems,
+  } = useItemsStore();
 
   const checklistButtons = [
     {

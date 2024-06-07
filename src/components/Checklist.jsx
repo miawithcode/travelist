@@ -42,8 +42,7 @@ const Section = ({ category, categoryItems, color }) => {
 };
 
 const Item = ({ id, label, isPacked }) => {
-  const deleteItem = useItemsStore((state) => state.deleteItem);
-  const toggleItem = useItemsStore((state) => state.toggleItem);
+  const { deleteItem, toggleItem } = useItemsStore();
 
   return (
     <li className="item">

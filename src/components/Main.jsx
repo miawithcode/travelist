@@ -10,13 +10,8 @@ import ChecklistContainer from './ChecklistContainer';
 import { useItemsStore } from '../stores/itemsStore';
 
 const Main = () => {
-  const items = useItemsStore((state) => state.items);
-  const calculateNumbersOfItemsPacked = useItemsStore(
-    (state) => state.calculateNumbersOfItemsPacked
-  );
-  const calculateTotalNumberOfItems = useItemsStore(
-    (state) => state.calculateTotalNumberOfItems
-  );
+  const { items, calculateNumbersOfItemsPacked, calculateTotalNumberOfItems } =
+    useItemsStore();
 
   const [sortBy, setSortBy] = useState('default');
 

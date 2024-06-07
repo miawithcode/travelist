@@ -3,8 +3,7 @@ import Select from 'react-select';
 import { useItemsStore } from '../stores/itemsStore';
 
 const NewItemForm = () => {
-  const addItem = useItemsStore((state) => state.addItem);
-  const items = useItemsStore((state) => state.items);
+  const { addItem, items } = useItemsStore();
 
   const categories = items
     .map((item) => item.category)
