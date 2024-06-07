@@ -1,4 +1,4 @@
-import useItemsContext from '../hooks/useItemsContext';
+import { useItemsStore } from '../stores/itemsStore';
 import EmptyView from './EmptyView';
 import Cancel01Icon from './icons/Cancel01Icon';
 import MoreHorizontalIcon from './icons/MoreHorizontalIcon';
@@ -42,7 +42,8 @@ const Section = ({ category, categoryItems, color }) => {
 };
 
 const Item = ({ id, label, isPacked }) => {
-  const { deleteItem, toggleItem } = useItemsContext();
+  const deleteItem = useItemsStore((state) => state.deleteItem);
+  const toggleItem = useItemsStore((state) => state.toggleItem);
 
   return (
     <li className="item">

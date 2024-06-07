@@ -7,11 +7,16 @@ import Sort from './Sort';
 import { useMemo, useState } from 'react';
 import Header from './Header';
 import ChecklistContainer from './ChecklistContainer';
-import useItemsContext from '../hooks/useItemsContext';
+import { useItemsStore } from '../stores/itemsStore';
 
 const Main = () => {
-  const { items, calculateNumbersOfItemsPacked, calculateTotalNumberOfItems } =
-    useItemsContext();
+  const items = useItemsStore((state) => state.items);
+  const calculateNumbersOfItemsPacked = useItemsStore(
+    (state) => state.calculateNumbersOfItemsPacked
+  );
+  const calculateTotalNumberOfItems = useItemsStore(
+    (state) => state.calculateTotalNumberOfItems
+  );
 
   const [sortBy, setSortBy] = useState('default');
 

@@ -1,9 +1,14 @@
 import { useRef, useState } from 'react';
 import Select from 'react-select';
-import useItemsContext from '../hooks/useItemsContext';
+import { useItemsStore } from '../stores/itemsStore';
 
 const NewItemForm = () => {
-  const { addItem, categories } = useItemsContext();
+  const addItem = useItemsStore((state) => state.addItem);
+  const items = useItemsStore((state) => state.items);
+
+  const categories = items
+    .map((item) => item.category)
+    .map((category) => ({ label: category, value: category }));
 
   const [item, setItem] = useState('');
   const [category, setCategory] = useState('Inbox');
